@@ -16,7 +16,7 @@ function onDisconnect (modem) {
 
 
 var modem1 = new Modem({
-    port : 'COM7',
+    port : 'COM26',
     // notify_port : '/dev/ttyUSB1',
     onDisconnect : onDisconnect,
     balance_ussd : '*101#',
@@ -34,9 +34,20 @@ modem1.connect(function () {
         console.log('SMSes:', sms);
     });
 
-    modem1.getUSSD('*101#',(err, balance_money) => {
-      console.log('Balance:', balance_money);
-    });
+    // modem1.getUSSD('*101#',(err, balance_money) => {
+    //   console.log('Balance:', balance_money);
+    // });
+
+    modem1.getMessagesFromStorage('"ALL"', (er, allms) => {
+      console.log(allms);
+    })
+
+    modem1.customATCommand('AT\r', (err, data) => {
+      if (err) {
+        console.log(err);
+      }
+      console.log(data);
+    })
 
     // modem1.sendSMS({
     //     receiver : '1414',
@@ -49,12 +60,12 @@ modem1.connect(function () {
     //     console.log('sendSMS', data);
     // });
 
-    modem1.deleteAllSMS (function(err){
-        if (err === undefined) {
-            console.log ('all messages were deleted');
-        } else {
-            console.log ('messages were not deleted');
-        }
-    });
+    // modem1.deleteAllSMS (function(err){
+    //     if (err === undefined) {
+    //         console.log ('all messages were deleted');
+    //     } else {
+    //         console.log ('messages were not deleted');
+    //     }
+    // });
 
 });

@@ -1250,6 +1250,7 @@ Modem.prototype.getSignalStrength = function (cb) {
  */
 Modem.prototype.customATCommand = function (cmd, cb) {
   this.sendCommand(cmd, function (data) {
+    console.log(data);
     if (typeof cb === 'function') {
       if (data.indexOf('OK') !== -1) {
         cb(undefined, data);
