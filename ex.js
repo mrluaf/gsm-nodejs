@@ -22,7 +22,7 @@ var modem1 = new Modem({
     balance_ussd : '*101#',
     dollar_regexp : /(-?\d+)\s*rub/,
     cents_regexp : /(-?\d+)\s*kop/,
-    debug : false
+    debug : true
 });
 modem1.on('message', onStatusReport);
 modem1.on('report', onStatusReport);
