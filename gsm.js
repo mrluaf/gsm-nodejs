@@ -172,6 +172,7 @@ Modem.prototype.connectPort = function (port, cb) {
     bufCursor += data.length;
     if (buf[bufCursor - 1] === 13 || buf[bufCursor - 1] === 10) {
       var str = buf.slice(0,bufCursor).toString();
+      console.log(str);
       this.logger.debug('AT response: %s', str.trim());
        serialPort.removeListener('data', onData);
       if (str.indexOf('OK') !== -1 || str.indexOf('AT') !== -1) {
@@ -1250,7 +1251,6 @@ Modem.prototype.getSignalStrength = function (cb) {
  */
 Modem.prototype.customATCommand = function (cmd, cb) {
   this.sendCommand(cmd, function (data) {
-    console.log(data);
     if (typeof cb === 'function') {
       if (data.indexOf('OK') !== -1) {
         cb(undefined, data);

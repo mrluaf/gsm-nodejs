@@ -16,7 +16,7 @@ function onDisconnect (modem) {
 
 
 var modem1 = new Modem({
-    port : 'COM26',
+    port : 'COM7',
     // notify_port : '/dev/ttyUSB1',
     onDisconnect : onDisconnect,
     balance_ussd : '*101#',

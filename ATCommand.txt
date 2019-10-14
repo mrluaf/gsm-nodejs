@@ -1,0 +1,18 @@
+Check network: AT+COPS?
++COPS: 0,0,"VIETTEL",2
+
++COPS: 0,2,45202
+
++COPS:
+(2,"VIETTEL","VIETTEL","45204",2),
+(3,"Vietnamobile","Vietnamobile","45205",2),
+(3,"Mobifone","Mobifone","45201",2),
+(3,"Vinaphone","Vinaphone","45202",2),
+
++CPIN: READY
+
+AT+CUSD=1,"*110#",15
+
+
+
+AT+CFUN=1,1 //Reset Modem --> Wait until reconnect
